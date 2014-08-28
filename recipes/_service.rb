@@ -105,7 +105,7 @@ if node[:consul][:bootstrap_expect]
 end
 
 copy_params = [
-  :bind_addr, :datacenter, :domain, :log_level, :node_name, 
+  :bind_addr, :datacenter, :domain, :log_level, :node_name,
   :advertise_addr, :encrypt, :bootstrap_expect, :recursor
 ]
 copy_params.each do |key|
