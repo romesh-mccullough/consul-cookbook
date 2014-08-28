@@ -28,6 +28,7 @@ suites:
           datacenter: FortMeade
           bind_interface: eth0
           advertise_interface: eth0
+          bootstrap_expect: 1
   - name: ui
     run_list:
       - recipe[consul::default]
