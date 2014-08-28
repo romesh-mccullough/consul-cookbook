@@ -25,6 +25,8 @@ consul_directories << '/var/lib/consul'
 # Select service user & group
 case node[:consul][:init_style]
 when 'runit'
+  include_recipe 'runit'
+
   consul_user = node[:consul][:service_user]
   consul_group = node[:consul][:service_group]
   consul_directories << '/var/log/consul'
@@ -107,14 +109,6 @@ copy_params.each do |key|
   end
 end
 
-file node[:consul][:config_dir] + '/default.json' do
-  user consul_user
-  group consul_group
-  mode 0600
-  action :create
-  content JSON.pretty_generate(service_config, quirks_mode: true)
-end
-
 case node[:consul][:init_style]
 when 'init'
   template '/etc/init.d/consul' do
@@ -133,8 +127,6 @@ when 'init'
     subscribes :restart, "file[#{node[:consul][:config_dir]}/default.json]", :delayed
   end
 when 'runit'
-  include_recipe 'runit'
-
   runit_service 'consul' do
     supports status: true, restart: true, reload: true
     action [:enable, :start]
@@ -145,4 +137,12 @@ when 'runit'
       config_dir: node[:consul][:config_dir],
     )
   end
+end
+
+file node[:consul][:config_dir] + '/default.json' do
+  user consul_user
+  group consul_group
+  mode 0600
+  action :create
+  content JSON.pretty_generate(service_config, quirks_mode: true)
 end
