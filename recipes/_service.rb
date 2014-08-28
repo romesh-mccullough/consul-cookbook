@@ -100,8 +100,22 @@ if node[:consul][:serve_ui]
   service_config[:client_addr] = node[:consul][:client_addr]
 end
 
+if node[:consul][:bootstrap_expect]
+  if not node[:consul][:bootstrap_expect].kind_of?(Integer)
+    Chef::Application.fatal!("node[:consul][:bootstrap_expect] must be an integer")
+  end
+end
+
+if node[:consul][:encrypt]
+  if not node[:consul][:encrypt].kind_of?(String)
+    Chef::Application.fatal!("node[:consul][:encrypt] must be an string")
+  end
+end
+
+
 copy_params = [
-  :bind_addr, :datacenter, :domain, :log_level, :node_name, :advertise_addr
+  :bind_addr, :datacenter, :domain, :log_level, :node_name,
+  :advertise_addr, :encrypt, :bootstrap_expect, :recursor
 ]
 copy_params.each do |key|
   if node[:consul][key]
