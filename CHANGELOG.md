@@ -1,3 +1,6 @@
+# 0.4.2
+Adds many missing attributes for the default config.
+
 # 0.4.1
 Adds support to bind to the IP of a named interface.
 
