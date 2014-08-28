@@ -46,7 +46,6 @@ default[:consul][:bootstrap_expect] = nil
 default[:consul][:recursor] = nil
 
 # TLS
-default[:consul][:cert_dir] = nil
 default[:consul][:ca_file] = nil
 default[:consul][:cert_file] = nil
 default[:consul][:key_file] = nil
