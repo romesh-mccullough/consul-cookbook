@@ -143,6 +143,71 @@ Installs and configures [Consul][1].
     </td>
     <td><tt>nil</tt></td>
   </tr>
+  <tr>
+    <td><tt>['consul']['encrypt']</tt></td>
+    <td>String</td>
+    <td>
+      Gossip encryption key.  Must be set on all nodes.
+      Generate using 'consul keygen' on existing host.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['bootstrap_expect']</tt></td>
+    <td>Integer</td>
+    <td>
+      Start in bootstrap_expect mode, instead of the manual -bootstrap method.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['recursor']</tt></td>
+    <td>String</td>
+    <td>
+      Address of DNS recursor to use.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['ca_file']</tt></td>
+    <td>String</td>
+    <td>
+      Path to the CA cert file, for TLS RPC encryption. This cookbook does not place certs for you.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['cert_file']</tt></td>
+    <td>String</td>
+    <td>
+      Path to the cert file, for TLS RPC encryption. This cookbook does not place certs for you.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['key_file']</tt></td>
+    <td>String</td>
+    <td>
+      Path to the key file, for TLS RPC encryption. This cookbook does not place certs for you.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['verify_incoming']</tt></td>
+    <td>Boolean</td>
+    <td>
+      Setting to verify incoming connections/peers, for TLS RPC encryption.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['verify_outgoing']</tt></td>
+    <td>Boolean</td>
+    <td>
+      Setting to verify outgoing connections/peers, for TLS RPC encryption.
+    </td>
+    <td><tt>nil</tt></td>
+  </tr>
 </table>
 
 ### Consul UI Attributes
