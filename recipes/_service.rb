@@ -106,6 +106,13 @@ if node[:consul][:bootstrap_expect]
   end
 end
 
+if node[:consul][:encrypt]
+  if not node[:consul][:encrypt].kind_of?(String)
+    Chef::Application.fatal!("node[:consul][:encrypt] must be an string")
+  end
+end
+
+
 copy_params = [
   :bind_addr, :datacenter, :domain, :log_level, :node_name,
   :advertise_addr, :encrypt, :bootstrap_expect, :recursor
