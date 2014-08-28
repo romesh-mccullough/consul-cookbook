@@ -41,6 +41,9 @@ default[:consul][:servers] = []
 default[:consul][:init_style] = 'init'   # 'init', 'runit'
 default[:consul][:service_user] = 'consul'
 default[:consul][:service_group] = 'consul'
+default[:consul][:encrypt] = nil
+default[:consul][:bootstrap_expect] = nil
+default[:consul][:recursor] = nil
 
 # Optionally bind to a specific interface
 default[:consul]["bind_interface"] = nil
