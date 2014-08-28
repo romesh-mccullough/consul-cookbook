@@ -29,6 +29,7 @@ suites:
           bind_interface: eth0
           advertise_interface: eth0
           bootstrap_expect: 1
+          encrypt: "QICgUG1NXxwUCexvxsq+vA=="
   - name: runit
     run_list:
       - recipe[consul::default]
