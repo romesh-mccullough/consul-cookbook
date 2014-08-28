@@ -45,6 +45,14 @@ default[:consul][:encrypt] = nil
 default[:consul][:bootstrap_expect] = nil
 default[:consul][:recursor] = nil
 
+# TLS
+default[:consul][:cert_dir] = nil
+default[:consul][:ca_file] = nil
+default[:consul][:cert_file] = nil
+default[:consul][:key_file] = nil
+default[:consul][:verify_incoming] = nil
+default[:consul][:verify_outgoing] = nil
+
 # Optionally bind to a specific interface
 default[:consul]["bind_interface"] = nil
 default[:consul]["advertise_interface"] = nil
