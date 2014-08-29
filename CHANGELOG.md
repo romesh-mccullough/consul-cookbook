@@ -1,5 +1,6 @@
 # 0.4.2
-Adds many missing attributes for the default config.
+* Adds many missing attributes for the default config.
+* Switches default mode to server with a bootstrap_expect of 1.
 
 # 0.4.1
 Adds support to bind to the IP of a named interface.
