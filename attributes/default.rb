@@ -16,7 +16,7 @@
 #
 
 default[:consul][:base_url] = 'https://dl.bintray.com/mitchellh/consul/'
-default[:consul][:version] = '0.3.0'
+default[:consul][:version] = '0.3.1'
 default[:consul][:install_method] = 'binary'
 default[:consul][:install_dir] = '/usr/local/bin'
 default[:consul][:checksums] = {
@@ -34,7 +34,7 @@ default[:consul][:checksums] = {
 default[:consul][:source_revision] = 'master'
 
 # Service attributes
-default[:consul][:service_mode] = 'bootstrap'
+default[:consul][:service_mode] = 'server'
 default[:consul][:data_dir] = '/var/lib/consul'
 default[:consul][:config_dir] = '/etc/consul.d'
 default[:consul][:servers] = []
@@ -42,7 +42,7 @@ default[:consul][:init_style] = 'init'   # 'init', 'runit'
 default[:consul][:service_user] = 'consul'
 default[:consul][:service_group] = 'consul'
 default[:consul][:encrypt] = nil
-default[:consul][:bootstrap_expect] = nil
+default[:consul][:bootstrap_expect] = 1
 default[:consul][:recursor] = nil
 
 # TLS

@@ -24,7 +24,7 @@ Installs and configures [Consul][1].
     <td><tt>['consul']['version']</tt></td>
     <td>String</td>
     <td>Version to install</td>
-    <td><tt>0.3.0</tt></td>
+    <td><tt>0.3.1</tt></td>
   </tr>
   <tr>
     <td><tt>['consul']['base_url']</tt></td>
@@ -47,8 +47,17 @@ Installs and configures [Consul][1].
   <tr>
     <td><tt>['consul']['service_mode']</tt></td>
     <td>String</td>
-    <td>Mode to run consul as: bootstrap, server, or client</td>
-    <td><tt>bootstrap</tt></td>
+    <td>Mode to run consul as: bootstrap, server, or client
+    <br><b>Note: bootstrap mode has been deprecated in favor of bootstrap_expect</b></td>
+    <td><tt>server</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['consul']['bootstrap_expect']</tt></td>
+    <td>Integer</td>
+    <td>
+      The number of servers that need to join for the cluster to be considered bootstrapped and start leader election.
+    </td>
+    <td><tt>1</tt></td>
   </tr>
   <tr>
     <td><tt>['consul']['data_dir']</tt></td>
@@ -153,14 +162,6 @@ Installs and configures [Consul][1].
     <td><tt>nil</tt></td>
   </tr>
   <tr>
-    <td><tt>['consul']['bootstrap_expect']</tt></td>
-    <td>Integer</td>
-    <td>
-      Start in bootstrap_expect mode, instead of the manual -bootstrap method.
-    </td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
     <td><tt>['consul']['recursor']</tt></td>
     <td>String</td>
     <td>
@@ -253,6 +254,8 @@ Installs and configures [Consul][1].
 ### consul::default
 
 This uses the binary installation recipe by default. It also starts consul at boot time.
+
+For a multi-server cluster be sure to set `node[:consul][:bootstrap_expect]` to the appropriate number.
 
 ### consul::binary_install
 
