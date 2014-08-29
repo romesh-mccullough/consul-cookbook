@@ -104,6 +104,10 @@ if node[:consul][:bootstrap_expect]
   if not node[:consul][:bootstrap_expect].kind_of?(Integer)
     Chef::Application.fatal!("node[:consul][:bootstrap_expect] must be an integer")
   end
+
+  if node[:consul][:service_mode] == "bootstrap"
+    Chef::Application.fatal!("node[:consul][:service_mode] cannot be set to 'bootstrap' while node[:consul][:bootstrap_expect] is set.")
+  end
 end
 
 if node[:consul][:encrypt]
